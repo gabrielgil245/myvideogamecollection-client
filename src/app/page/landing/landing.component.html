@@ -1,0 +1,16 @@
+<div>
+    <form class="container border shadow rounded my-5">
+        <div class="row">
+            <h2 class="col-12 fw-bolder text-center my-3">User Login</h2>
+            <div class="offset-1 col-10 text-center d-flex flex-column my-3">
+                <input type="text" placeholder="Username" [(ngModel)]='_username' name="username">
+            </div>
+            <div class="offset-1 col-10 text-center d-flex flex-column my-3">
+                <input type="text" placeholder="Password" [(ngModel)]='_password' name="password">
+            </div>
+            <div class="offset-3 col-6 text-center d-flex flex-column my-3">
+                <button type="submit" class="btn btn-primary" (click)="login(_username, _password)">Log In</button>
+            </div>
+        </div>
+    </form>
+</div>
