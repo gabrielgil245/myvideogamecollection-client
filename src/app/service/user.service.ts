@@ -24,4 +24,16 @@ export class UserService {
     return this.httpClient.get<any>(`${this.utilService.getServerDomain()}/myvideogamecollection/api/logout`, { withCredentials: true });
   }
 
+  signUp(username: string, password: string, firstName: string, lastName: string, email: string, birthday: any, aboutMe: any) {
+    return this.httpClient.post<any>(`${this.utilService.getServerDomain()}/myvideogamecollection/api/user`, {
+      username: username,
+      password: password,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      birthday: birthday,
+      aboutMe: aboutMe
+    }, { withCredentials: true });
+  }
+
 }

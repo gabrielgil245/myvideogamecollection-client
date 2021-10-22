@@ -1,0 +1,36 @@
+<div>
+    <form class="container border shadow rounded my-5">
+        <div class="row">
+            <h2 class="col-12 fw-bolder text-center my-3">Sign Up</h2>
+            <div class="offset-1 col-10 text-center d-flex flex-column my-3">
+                <input class="form-control" type="text" placeholder="Username" [(ngModel)]='_username' name="username" required minlength="8">
+            </div>
+            <div class="offset-1 col-10 text-center d-flex flex-column my-3">
+                <input class="form-control" type="password" placeholder="Password" [(ngModel)]='_password' name="password" required minlength="8">
+            </div>
+            <div class="offset-1 col-10 text-center d-flex flex-column my-3">
+                <input class="form-control" type="text" placeholder="First Name" [(ngModel)]='_firstName' name="firstName" required>
+            </div>
+            <div class="offset-1 col-10 text-center d-flex flex-column my-3">
+                <input class="form-control" type="text" placeholder="Last Name" [(ngModel)]='_lastName' name="lastName" required>
+            </div>
+            <div class="offset-1 col-10 text-center d-flex flex-column my-3">
+                <input class="form-control" type="email" placeholder="Email" [(ngModel)]='_email' name="email" required>
+            </div>
+            <div class="offset-1 col-10 text-center d-flex flex-column my-3">
+                <input class="form-control" type="date" placeholder="Date" [(ngModel)]='_birthday' name="birthday">
+            </div>
+            <div class="offset-1 col-10 text-center d-flex flex-column my-3">
+                <input class="form-control" type="textbox" placeholder="About Me" [(ngModel)]='_aboutMe' name="aboutMe" maxlength="255">
+            </div>
+            <div class="offset-3 col-6 text-center d-flex flex-column my-3">
+                <div *ngIf="!_isValid" class="text-danger my-3">Please fill out the fields above!</div>
+                <button *ngIf="!_isUserCreated" type="submit" class="btn btn-primary my-3" (click)="signUp(_username, _password, _firstName, _lastName, _email, _birthday, _aboutMe)">Submit</button>
+                <button *ngIf="_isUserCreated" class="btn btn-primary my-3" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span> Loading . . .</span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
