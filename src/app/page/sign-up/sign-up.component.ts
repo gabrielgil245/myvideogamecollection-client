@@ -32,7 +32,6 @@ export class SignUpComponent implements OnInit {
       this._isValid = true;
       if(birthday == "") birthday = null;
       if(aboutMe == "") aboutMe = null;
-      this._isUserCreated = true;
       this.userService.signUp(username, password, firstName, lastName, email, birthday, aboutMe).subscribe(data => {
         this.resetFields();
         if (data.success) {
