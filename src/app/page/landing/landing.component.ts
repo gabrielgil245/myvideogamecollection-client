@@ -9,8 +9,8 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class LandingComponent implements OnInit {
 
-  _username: string = "";
-  _password: string = "";
+  _username: string = '';
+  _password: string = '';
 
   constructor(private userService: UserService, private router: Router) { }
 
