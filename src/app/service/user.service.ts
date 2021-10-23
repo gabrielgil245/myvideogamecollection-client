@@ -21,7 +21,7 @@ export class UserService {
   }
 
   logout() {
-    return this.httpClient.get<any>(`${this.utilService.getServerDomain()}/myvideogamecollection/api/logout`, { withCredentials: true });
+    return this.httpClient.get<any>(`${this.utilService.getServerDomain()}/myvideogamecollection/api/logout`, {withCredentials: true});
   }
 
   signUp(username: string, password: string, firstName: string, lastName: string, email: string, birthday: any, aboutMe: any) {
@@ -33,7 +33,18 @@ export class UserService {
       email: email,
       birthday: birthday,
       aboutMe: aboutMe
-    }, { withCredentials: true });
+    }, {withCredentials: true});
+  }
+
+  forgotPassword(email: string) {
+    return this.httpClient.get<any>(`${this.utilService.getServerDomain()}/myvideogamecollection/api/forgot-password/${email}`, {withCredentials: true});
+  }
+
+  resetPassword(email: string, password: string) {
+    return this.httpClient.patch<any>(`${this.utilService.getServerDomain()}/myvideogamecollection/api/reset-password`, {
+      email: email,
+      password: password
+    }, {withCredentials: true});
   }
 
 }
