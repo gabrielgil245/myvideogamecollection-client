@@ -11,12 +11,18 @@ import { PlatformService } from './service/platform.service';
 import { GameService } from './service/game.service';
 import { LandingComponent } from './page/landing/landing.component';
 import { DashboardComponent } from './page/dashboard/dashboard.component';
+import { SignUpComponent } from './page/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './page/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './page/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
-    DashboardComponent
+    DashboardComponent,
+    SignUpComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
