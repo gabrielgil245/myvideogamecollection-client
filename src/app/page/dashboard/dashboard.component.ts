@@ -14,6 +14,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   _user: any;
   _platforms: any;
   _observer: Subscription = new Subscription;
+  _selectedPlatform: number = 0;
+  _selectedGame: number = 0;
 
   constructor(private userService: UserService, private platformService: PlatformService, private router: Router) { }
   
@@ -23,9 +25,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
       if (!user.success) {
         this.router.navigate(['']);
       } else if(user.success) {
-        this._platforms = this.platformService.getUserPlatforms(this._user.userId).subscribe(platform => {
+        this._observer = this._platforms = this.platformService.getUserPlatforms(this._user.userId).subscribe(platform => {
           this._platforms = platform.data;
-          console.log(this._platforms);
         });
       }
     })

@@ -15,6 +15,8 @@ import { SignUpComponent } from './page/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './page/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './page/reset-password/reset-password.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
+import { PlatformComponent } from './component/platform/platform.component';
+import { GameComponent } from './component/game/game.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { NavbarComponent } from './component/navbar/navbar.component';
     SignUpComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    NavbarComponent
+    NavbarComponent,
+    PlatformComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
