@@ -17,6 +17,7 @@ import { ResetPasswordComponent } from './page/reset-password/reset-password.com
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { PlatformComponent } from './component/platform/platform.component';
 import { GameComponent } from './component/game/game.component';
+import { ConsolesComponent } from './page/consoles/consoles.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { GameComponent } from './component/game/game.component';
     ResetPasswordComponent,
     NavbarComponent,
     PlatformComponent,
-    GameComponent
+    GameComponent,
+    ConsolesComponent
   ],
   imports: [
     BrowserModule,
