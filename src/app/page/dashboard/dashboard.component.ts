@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PlatformService } from 'src/app/service/platform.service';
@@ -14,11 +14,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   _user: any;
   _platforms: any;
   _observer: Subscription = new Subscription;
-  _selectedPlatform: number = 0;
-  _selectedGame: number = 0;
 
   constructor(private userService: UserService, private platformService: PlatformService, private router: Router) { }
-  
+    
   ngOnInit(): void {
     this.userService.checkSession().subscribe(user => {
       this._user = user.data;
