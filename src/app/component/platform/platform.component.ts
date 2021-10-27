@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, DoCheck, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { GameService } from 'src/app/service/game.service';
 
 @Component({
   selector: 'app-platform',
@@ -9,12 +11,18 @@ export class PlatformComponent implements OnInit {
 
   @Input()
   _platform: any;
-  _selectedPlatform: number = 0;
-  _selectedGame: number = 0;
 
   constructor() { }
-
+  
   ngOnInit(): void {
+  }
+
+  editPlatform(platformId: number) {
+    console.log(platformId);
+  }
+
+  deletePlatform(platformId: number) {
+    console.log(platformId);
   }
 
 }
