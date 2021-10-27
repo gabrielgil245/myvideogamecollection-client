@@ -1,1 +1,10 @@
-<p>game works!</p>
+<div>
+    <div class="col-11 d-flex justify-content-around align-items-center">
+        <span>{{_game.gameName}}</span>
+        <span>{{_game.gameStatus}}</span>
+
+        <!-- STRUCTURAL BINDING TO POTENTIAL EDIT WITHIN THE GAME ITEM -->
+        <!-- OUTPUT TO THE PARENT WILL BE NECESSARY TO COMPLETE THE EDITING PROCESS -->
+        <button *ngIf="_toEdit == _game.gameId">{{_game.gameId}}</button>
+    </div>    
+</div>

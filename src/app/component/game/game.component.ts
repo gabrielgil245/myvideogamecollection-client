@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-game',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  _game: any;
+  _toEdit: number = 0;
+  
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    this.userService.checkSession().subscribe(user => {
+      if (!user.success) {
+        this.router.navigate(['']);
+      }
+    })
   }
+    
 
 }
