@@ -12,6 +12,7 @@ export class ConsolesComponent implements OnInit, OnDestroy {
 
   _platformId: number = 0;
   _games: any;
+  _selectedGame: number = 0;
   _observer: Subscription = new Subscription;
 
   constructor(private route: ActivatedRoute, private gameService: GameService) { }
@@ -27,6 +28,14 @@ export class ConsolesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this._observer.unsubscribe();
+  }
+
+  editGame(gameId: number) {
+    console.log(gameId);
+  }
+
+  deleteGame(gameId: number) {
+    console.log(gameId);
   }
 
 }
