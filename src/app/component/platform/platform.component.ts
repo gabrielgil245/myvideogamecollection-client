@@ -1,6 +1,4 @@
-import { Component, DoCheck, Input, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { GameService } from 'src/app/service/game.service';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-platform',
@@ -11,6 +9,8 @@ export class PlatformComponent implements OnInit {
 
   @Input()
   _platform: any;
+  @Output()
+  _platformId = new EventEmitter();
 
   constructor() { }
   
@@ -21,8 +21,8 @@ export class PlatformComponent implements OnInit {
     console.log(platformId);
   }
 
-  deletePlatform(platformId: number) {
-    console.log(platformId);
+  toDelete(platformId: number) {
+    this._platformId.emit(platformId);
   }
 
 }
