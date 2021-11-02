@@ -15,7 +15,7 @@ export class ConsolesComponent implements OnInit, OnDestroy {
   _platformId: number = 0;
   _games: any;
   _selectedGame: number = 0;
-  _isEditting: Boolean = false;
+  _gameToEdit: number = 0;
   _observer: Subscription = new Subscription;
   _gameName: string = "";
   _gameStatus: string = "";
@@ -62,11 +62,15 @@ export class ConsolesComponent implements OnInit, OnDestroy {
 
   editGame(gameId: number) {
     console.log(gameId);
-    this._isEditting = !this._isEditting;
+    this._gameToEdit = gameId;
+  }
+
+  resetSelection() {
+    this._gameToEdit = 0;
   }
 
   deleteGame(gameId: number) {
-    this._isEditting = false;
+    this._gameToEdit = 0;
     this.gameService.deleteGame(gameId).subscribe(data => {
       if(data.success) {
         this.loadGames();

@@ -3,8 +3,9 @@
 <form class="my-5 py-5">
     <div class="mb-4">
         <div class="row">
-            <div class="col-12 d-flex justify-content-around">
+            <div class="col-12 d-flex justify-content-evenly">
                 <button type="submit" class="btn btn-secondary fw-bold px-4" (click)="editGame(_selectedGame)">Edit</button>
+                <button *ngIf="_gameToEdit > 0" type="submit" class="btn btn-light fw-bold px-4" (click)="resetSelection()">Back</button>
                 <button type="submit" class="btn btn-danger fw-bold px-4" (click)="deleteGame(_selectedGame)">Delete</button>
             </div>
         </div>
@@ -20,8 +21,16 @@
                 </div>
 
                 <div class="col-12 col-md-5 d-flex align-items-center my-2 mx-md-2">
-                    <input [ngClass]="{'border border-danger': _isEmpty}" class="form-control" type="text" placeholder="Game Status"
+                    <select [ngClass]="{'border border-danger': _isEmpty}" class="form-control" type="text" placeholder="Game Status"
                         [(ngModel)]='_gameStatus' name="gameStatus">
+                        <option value="">Select a Status</option>
+                        <option value="Not Started">Not Started</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="On-Hold">On-Hold</option>
+                        <option value="Dropped">Dropped</option>
+                        <option value="Finished">Finished</option>
+                        <option value="Completed">Completed</option>
+                    </select>
                 </div>
 
                 <div class="col-12 col-md-2 d-flex justify-content-center justify-content-md-start align-items-center my-2 mx-md-2">
@@ -54,7 +63,7 @@
                 </div>
 
                 <div class="col-12">
-                    <app-game [_game]="game"></app-game>
+                    <app-game [_game]="game" [(_isEditting)]="_gameToEdit"></app-game>
                 </div>
                 
             </div>

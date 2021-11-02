@@ -26,6 +26,14 @@ export class GameService {
     }, { withCredentials: true });
   }
 
+  editGame(gameId: number, gameName: string, gameStatus: string) {
+    return this.httpClient.patch<any>(`${this.utilService.getServerDomain()}/myvideogamecollection/api/game`, {
+      gameId: gameId,
+      gameName: gameName,
+      gameStatus: gameStatus
+    }, { withCredentials: true });
+  }
+
   deleteGame(gameId: number) {
     return this.httpClient.delete<any>(`${this.utilService.getServerDomain()}/myvideogamecollection/api/game/${gameId}`, { withCredentials: true });
   }

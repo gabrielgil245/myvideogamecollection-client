@@ -1,10 +1,29 @@
-<div>
-    <div class="d-flex align-items-center">
-        <span class="offset-1 col-5">{{_game.gameName}}</span>
-        <span class="col-5">{{_game.gameStatus}}</span>
-
-        <!-- STRUCTURAL BINDING TO POTENTIAL EDIT WITHIN THE GAME ITEM -->
-        <!-- OUTPUT TO THE PARENT WILL BE NECESSARY TO COMPLETE THE EDITING PROCESS -->
-        <button *ngIf="_toEdit == _game.gameId">{{_game.gameId}}</button>
+<form>
+    <div *ngIf="_isEditting != _game.gameId" class="row d-flex align-items-center">
+        <div class="col-10 offset-1 col-md-5 py-2 py-md-0">{{_game.gameName}}</div>
+        <div class="offset-1 col-10 col-md-5 py-2 py-md-0">{{_game.gameStatus}}</div>
     </div>    
-</div>
+
+    <div *ngIf="_isEditting == _game.gameId" class="row d-flex align-items-center">
+        <div class="col-11 col-md-5 d-flex flex-column py-2 py-md-0">
+            <input [ngClass]="{'border border-danger': _isEmpty}" class="form-control" type="text" placeholder="_gameName"
+                [(ngModel)]='_gameName' name="gameName">
+        </div>
+        <div class="col-11 col-md-3 d-flex flex-column py-2 py-md-0">
+            <select [ngClass]="{'border border-danger': _isEmpty}" class="form-control" type="text" placeholder="_gameStatus"
+                [(ngModel)]='_gameStatus' name="gameStatus">
+                <option value="">Select a Status</option>
+                <option value="Not Started">Not Started</option>
+                <option value="In Progress">In Progress</option>
+                <option value="On-Hold">On-Hold</option>
+                <option value="Dropped">Dropped</option>
+                <option value="Finished">Finished</option>
+                <option value="Completed">Completed</option>
+            </select>
+        </div>
+        <div class="offset-3 col-4 offset-md-0 col-md-3 d-flex flex-column">
+            <button class="btn btn-primary fw-bold" type="submit" (click)="editGame(_gameName, _gameStatus)">Submit</button>
+        </div>
+    </div>
+    
+</form>
