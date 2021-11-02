@@ -1,21 +1,46 @@
 <app-navbar></app-navbar>
 
 <form class="my-5 py-5">
-    <div>
+    <div class="mb-4">
         <div class="row">
-            <div class="col-12 d-flex justify-content-around mb-1">
-                <button type="submit" class="btn btn-success fw-bold px-4" (click)="editGame(_selectedGame)">Add</button>
+            <div class="col-12 d-flex justify-content-around">
                 <button type="submit" class="btn btn-secondary fw-bold px-4" (click)="editGame(_selectedGame)">Edit</button>
                 <button type="submit" class="btn btn-danger fw-bold px-4" (click)="deleteGame(_selectedGame)">Delete</button>
             </div>
         </div>
     </div>   
 
-    <div class="p-3">
-        <div class="row shadow">        
-            <div class="offset-1 col-11 d-flex justify-content-around py-3">
-                <h5>Game</h5>
-                <h5>Status</h5>
+    <form class="container p-3 shadow">
+        <div class="row">
+    
+            <div class="d-md-flex">
+                <div class="col-12 col-md-5 d-flex align-items-center my-2 mx-md-2">
+                    <input [ngClass]="{'border border-danger': _isEmpty}" class="form-control" type="text" placeholder="Game Name"
+                        [(ngModel)]='_gameName' name="gameName">
+                </div>
+
+                <div class="col-12 col-md-5 d-flex align-items-center my-2 mx-md-2">
+                    <input [ngClass]="{'border border-danger': _isEmpty}" class="form-control" type="text" placeholder="Game Status"
+                        [(ngModel)]='_gameStatus' name="gameStatus">
+                </div>
+
+                <div class="col-12 col-md-2 d-flex justify-content-center justify-content-md-start align-items-center my-2 mx-md-2">
+                    <button class="btn btn-primary fw-bold" type="submit" (click)="addGame(_gameName, _gameStatus)">Add</button>
+                </div>
+            </div>
+        </div>
+
+        
+        <div *ngIf="_isEmpty" class="d-flex justify-content-center align-items-center my-2 text-danger">Please fill out the
+            fields above!</div>
+        
+    </form>
+
+    <div class="container p-3">
+        <div class="row shadow">
+            <div class="d-flex py-3">
+                <h5 class="offset-2 col-5">Game</h5>
+                <h5 class="col-5">Status</h5>
             </div>
         </div>
     </div>
@@ -23,12 +48,12 @@
     <div *ngFor="let game of _games" class="container p-3">
         <div class="row shadow">
 
-            <div class="form-control d-flex py-3">
+            <div class="d-flex py-3">
                 <div class="col-1 d-flex justify-content-center align-items-center">
                     <input name="options" ng-control="options" type="radio" value="{{game.gameId}}" [(ngModel)]="_selectedGame">
                 </div>
 
-                <div class="col-11">
+                <div class="col-12">
                     <app-game [_game]="game"></app-game>
                 </div>
                 

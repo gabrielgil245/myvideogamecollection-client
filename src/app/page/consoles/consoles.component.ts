@@ -11,11 +11,15 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class ConsolesComponent implements OnInit, OnDestroy {
 
+  _user: any;
   _platformId: number = 0;
   _games: any;
   _selectedGame: number = 0;
   _isEditting: Boolean = false;
   _observer: Subscription = new Subscription;
+  _gameName: string = "";
+  _gameStatus: string = "";
+  _isEmpty: boolean = false;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private gameService: GameService, private router: Router) { }
 
@@ -24,6 +28,7 @@ export class ConsolesComponent implements OnInit, OnDestroy {
       if (!user.success) {
         this.router.navigate(['']);
       } else if (user.success) {
+        this._user = user.data;
         this.loadGames();
       }
     })
@@ -35,10 +40,24 @@ export class ConsolesComponent implements OnInit, OnDestroy {
 
   loadGames() {
     this._platformId = this.route.snapshot.params.platformId;
-    console.log(this._platformId);
     this._observer = this._games = this.gameService.getPlatformGames(this._platformId).subscribe(game => {
       this._games = game.data;
     });
+  }
+
+  addGame(gameName: string, gameStatus: string) {
+    if(gameName == "" || gameStatus == "") {
+      this._isEmpty = true;
+    } else {
+      this._isEmpty = false;
+      this.gameService.addGame(gameName, gameStatus, this._user.userId, this._platformId).subscribe(game => {
+        if(game.success) {
+          this.loadGames();
+        }
+      })
+    }
+    this._gameName = "";
+    this._gameStatus = "";
   }
 
   editGame(gameId: number) {
