@@ -2,6 +2,34 @@
 
 <div class="container my-5 py-5">
     <div class="row">
+
+        <form class="col-12 rounded mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <!-- ADDING PLATFORM SECTION -->
+                    
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-evenly my-2">
+                            <input [ngClass]="{'border border-danger': _isEmpty}" class="form-control" type="text"
+                                placeholder="Platform Name" [(ngModel)]='_platformName' name="platformName">
+                        </div>
+                        <div class="col-12 d-flex justify-content-evenly my-2">
+                            <input [ngClass]="{'border border-danger': _isEmpty}" class="form-control" type="text"
+                                placeholder="Platform Username" [(ngModel)]='_platformUsername' name="platformUsername">
+                        </div>
+    
+                        <div *ngIf="_isEmpty" class="d-flex justify-content-center text-danger my-2">Please fill out the fields above!</div>
+    
+                        <div class="col-12 d-flex justify-content-evenly mt-2">
+                            <button type="submit" class="btn btn-success fw-bold"
+                                (click)="addPlatform(_platformName, _platformUsername)">Add</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </form>
+
         <div *ngFor="let platform of _platforms" class="col-12 col-md-6 col-lg-4 rounded mb-3">
             <div class="card">
                 <!-- FAVICON.ICO IS A PLACEHOLDER -->
@@ -12,34 +40,6 @@
                 </div>
             </div>
         </div>
-
-        <form class="col-12 col-md-6 col-lg-4 rounded mb-3">
-            <div class="card">
-                <!-- FAVICON.ICO IS A PLACEHOLDER -->
-                <img src="favicon.ico" class="card-img-top" alt="..." style="max: width 100px;">
-                <div class="card-body">
-                    <!-- ADDING PLATFORM SECTION -->
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 d-flex justify-content-evenly my-2">
-                                <input [ngClass]="{'border border-danger': _isEmpty}" class="form-control" type="text" placeholder="Platform Name"
-                                    [(ngModel)]='_platformName' name="platformName">
-                            </div>
-                            <div class="col-12 d-flex justify-content-evenly my-2">
-                                <input [ngClass]="{'border border-danger': _isEmpty}" class="form-control" type="text" placeholder="Platform Username"
-                                    [(ngModel)]='_platformUsername' name="platformUsername">
-                            </div>
-
-                            <div *ngIf="_isEmpty" class="d-flex justify-content-center text-danger my-2">Please fill out the fields above!</div>
-
-                            <div class="col-12 d-flex justify-content-evenly mt-2">
-                                <button type="submit" class="btn btn-success fw-bold" (click)="addPlatform(_platformName, _platformUsername)">Add</button>
-                            </div>
-                        </div>
-                    </div>                    
-                </div>
-            </div>
-        </form>
     </div>
 </div>
 
