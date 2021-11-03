@@ -6,11 +6,11 @@
 
     <div *ngIf="_isEditting == _game.gameId" class="row d-flex align-items-center">
         <div class="col-11 col-md-5 d-flex flex-column py-2 py-md-0">
-            <input [ngClass]="{'border border-danger': _isEmpty}" class="form-control" type="text" placeholder="_gameName"
+            <input [ngClass]="{'border border-danger': _isEmpty}" class="form-control" type="text" placeholder="Game Name"
                 [(ngModel)]='_gameName' name="gameName">
         </div>
         <div class="col-11 col-md-3 d-flex flex-column py-2 py-md-0">
-            <select [ngClass]="{'border border-danger': _isEmpty}" class="form-control" type="text" placeholder="_gameStatus"
+            <select [ngClass]="{'border border-danger': _isEmpty}" class="form-control" type="text" placeholder="Game Status"
                 [(ngModel)]='_gameStatus' name="gameStatus">
                 <option value="">Select a Status</option>
                 <option value="Not Started">Not Started</option>
