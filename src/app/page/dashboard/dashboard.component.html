@@ -32,8 +32,8 @@
 
         <div *ngFor="let platform of _platforms" class="col-12 col-md-6 col-lg-4 rounded mb-3">
             <div class="card">
-                <!-- FAVICON.ICO IS A PLACEHOLDER -->
-                <img src="favicon.ico" class="card-img-top" alt="..." style="max: width 100px;">
+                <i class="fas fa-gamepad d-flex justify-content-center align-items-center" style="font-size: 10rem;"></i>
+                <!-- <img src="favicon.ico" class="card-img-top" alt="..." style="width: 100%;"> -->
                 <div class="card-body">
                     <!-- PLATFORM COMPONENT -->
                     <app-platform [_platform]="platform" (_platformId)="deletePlatform($event)"></app-platform>
@@ -42,24 +42,3 @@
         </div>
     </div>
 </div>
-
-<!-- INITIAL IDEA -->
-<!-- <form class="my-5 py-5">
-    <div *ngFor="let platform of _platforms" class="container p-3">
-        <div class="row shadow">
-
-            <div class="form-control d-flex py-3">
-                <div class="col-1 d-flex justify-content-center align-items-center">
-                    <input name="options" ng-control="options" type="radio" value="{{platform.platformId}}" [(ngModel)]="_selectedPlatform">
-                </div>
-
-                <div class="col-11">
-                    <app-platform [_platform]="platform"></app-platform>
-                </div>
-                
-            </div>
-    
-        </div>
-    
-    </div>
-</form> -->
