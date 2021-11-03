@@ -21,6 +21,14 @@ export class PlatformService {
     }, { withCredentials: true });
   }
 
+  editPlatform(platformId: number, platformName: string, platformUsername: string) {
+    return this.httpClient.patch<any>(`${this.utilService.getServerDomain()}/myvideogamecollection/api/platform`, {
+      platformId: platformId,
+      platformName: platformName,
+      platformUsername: platformUsername
+    }, { withCredentials: true });
+  }
+
   deletePlatform(platformId: number) {
     return this.httpClient.delete<any>(`${this.utilService.getServerDomain()}/myvideogamecollection/api/platform/${platformId}`, { withCredentials: true });
   }

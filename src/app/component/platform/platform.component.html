@@ -1,11 +1,32 @@
 <div class="container">
-    <div class="row">
-        <div class="col-12 my-2">Platform: {{_platform.platformName}}</div>
-        <div class="col-12 my-2">Platform Username: {{_platform.platformUsername}}</div>
     
+    
+    <div class="row">
+        <div *ngIf="_isEditting == false">
+            <div class="col-12 my-2">Platform: {{_platform.platformName}}</div>
+            <div class="col-12 my-2">Platform Username: {{_platform.platformUsername}}
+            </div>
+        </div>
+
+        <div *ngIf="_isEditting == true">
+            <div class="col-12 d-flex flex-column py-2">
+                <input [ngClass]="{'border border-danger': _isEmpty}" class="form-control" type="text" placeholder="Platform Name"
+                    [(ngModel)]='_platformName' name="platformName">
+            </div>
+
+            <div class="col-12 d-flex flex-column py-2">
+                <input class="form-control" type="text" placeholder="Platform Username"
+                    [(ngModel)]='_platformUsername' name="platformUsername">
+            </div>
+            
+            <div class="offset-3 col-6 d-flex flex-column py-2">
+                <button class="btn btn-success fw-bold" type="submit" (click)="editPlatform(_platformName, _platformUsername)">Submit</button>
+            </div>
+        </div>
+
         <div class="col-12 d-flex justify-content-evenly my-3">
             <button type="submit" class="btn btn-primary fw-bold" routerLink="/consoles/{{_platform.platformId}}">View</button>
-            <button type="submit" class="btn btn-secondary fw-bold" (click)="editPlatform(_platform.platformId)">Edit</button>
+            <button type="submit" class="btn btn-secondary fw-bold" (click)="toEdit()" [innerHTML]="_isEditting ? 'Back' : 'Edit'"></button>
             <button type="submit" class="btn btn-danger fw-bold"
                 (click)="toDelete(_platform.platformId)">Delete</button>
         </div>
