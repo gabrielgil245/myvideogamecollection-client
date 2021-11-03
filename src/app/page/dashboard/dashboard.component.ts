@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   addPlatform(platformName: string, platformUsername: string) {
-    if(platformName == "" || platformUsername == "") {
+    if(platformName == "") {
       this._isEmpty = true;
     } else {
       this._isEmpty = false;

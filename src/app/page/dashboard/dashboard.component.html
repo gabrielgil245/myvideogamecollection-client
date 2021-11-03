@@ -14,11 +14,11 @@
                                 placeholder="Platform Name" [(ngModel)]='_platformName' name="platformName">
                         </div>
                         <div class="col-12 d-flex justify-content-evenly my-2">
-                            <input [ngClass]="{'border border-danger': _isEmpty}" class="form-control" type="text"
+                            <input class="form-control" type="text"
                                 placeholder="Platform Username" [(ngModel)]='_platformUsername' name="platformUsername">
                         </div>
     
-                        <div *ngIf="_isEmpty" class="d-flex justify-content-center text-danger my-2">Please fill out the fields above!</div>
+                        <div *ngIf="_isEmpty" class="d-flex justify-content-center text-danger my-2">Please fill out the field above!</div>
     
                         <div class="col-12 d-flex justify-content-evenly mt-2">
                             <button type="submit" class="btn btn-success fw-bold"
